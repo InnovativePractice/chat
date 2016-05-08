@@ -5,6 +5,12 @@ import java.sql.*;
 import com.bean.User;
 
 public class UserDao extends BaseDao {
+    /**
+     * 根据用户ID查找用户对象
+     *
+     * @param name 用户ID
+     * @return ID对应的用户对象
+     */
     public User findByName(String name) {
         String sql = "SELECT * FROM [User] WHERE UserId=?";
         User user = new User();
@@ -23,5 +29,26 @@ public class UserDao extends BaseDao {
             return null;
         }
         return user;
+    }
+
+    /**
+     * 添加一个新用户
+     *
+     * @param user 要添加的用户
+     * @return 添加是否成功
+     */
+    public boolean add(User user) {
+        String sql = "INSERT INTO [User] VALUES(?,?)";
+        try {
+            Connection conn = dataSource.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user.getUserId());
+            pstmt.setString(2, user.getPassword());
+            int c = pstmt.executeUpdate();
+            return c != 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

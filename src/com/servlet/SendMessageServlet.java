@@ -25,8 +25,7 @@ public class SendMessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Message message = new Message();
-        PrintWriter out = response.getWriter();
-        try {
+        try (PrintWriter out = response.getWriter()) {
             response.setContentType("text/html");
             response.setHeader("Cache-Control", "no-store");
             response.setHeader("Pragma", "no-cache");
@@ -37,8 +36,6 @@ public class SendMessageServlet extends HttpServlet {
             message.setTime(new Date((new java.util.Date()).getTime()));
             (new MessageDao()).save(message);
             out.println("success");
-        } finally {
-            out.close();
         }
     }
 
