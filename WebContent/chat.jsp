@@ -25,20 +25,20 @@
 <div style="display:none" id="userid"><%=((User) (session.getAttribute("user"))).getUserId() %>
 </div>
 <div style="position:fixed; top:0; left: 0;width: 10%; height: 100%;border-style:solid;border-color:#808080;border-width:1px;background-color:#EFFFFF;">
-    <h3 style="background-color:#EFFFFF;">好友列表</h1>
-            <%
-	ArrayList<Friend> friends=(ArrayList<Friend>)session.getAttribute("friends");
-	for(int i=0;i<friends.size();i++){
-	%>
-        <div id="<%=((Friend)(friends.get(i))).getFriend() %>" onclick="chooseFriend(this)" onmouseover="fmovwe(this)"
-             onmouseout="fmout(this)" style="cursor:default;height:30px;"><%=((Friend) (friends.get(i))).getFriend() %>
-        </div>
-            <%
-	}
-	%>
+    <h3 style="background-color:#EFFFFF;">好友列表</h3>
+    <%
+        ArrayList<Friend> friends = (ArrayList<Friend>) session.getAttribute("friends");
+        for (int i = 0; i < friends.size(); i++) {
+    %>
+    <div id="<%=friends.get(i).getFriend() %>" onclick="chooseFriend(this)" onmouseover="fmovwe(this)"
+         onmouseout="fmout(this)" style="cursor:default;height:30px;"><%=friends.get(i).getFriend() %>
+    </div>
+    <%
+        }
+    %>
 </div>
 <div class="gradient"
-     style="position:fixed;top:0; left: 10%;width: 90%; height: 80%;border-style:solid; auto;border-color:#808080;border-width:1px;">
+     style="position:fixed;top:0; left: 10%;width: 90%; height: 80%;border-style:solid; auto; border-color:#808080;border-width:1px;">
     <h1 id="friend"></h1>
     <div id="messagebox"
          style="text-align:left;position:absolute;top:20%; left: 2%;width: 96%; height: 80%;OVERFLOW-Y:auto;"></div>

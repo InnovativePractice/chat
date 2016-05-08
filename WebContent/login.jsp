@@ -10,7 +10,7 @@
 <form action="LoginServlet" method="post">
     用户名:<input type="text" name="UserId">
     密码:<input type="password" name="Password">
-    <input type="submit" name="sumbit" value="登陆">
+    <input type="submit" name="submit" value="登陆">
 </form>
 </body>
 </html>
