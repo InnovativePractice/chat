@@ -10,15 +10,15 @@ import java.util.regex.Pattern;
  * @author Administrator
  * @since 2016/6/17
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "FieldCanBeLocal"})
 public class CompleteMoticon {
-    private static String regMoticon = ":@([^ ]*) ";
+    private static String regMoticon = ":([^ ]+?):";
     private static HashMap<String, String> moticons;
 
     static {
         if (moticons == null) {
             moticons = new HashMap<>();
-            moticons.put(":@", ":@");
+            moticons.put(":", ":");
             moticons.put("hello", "你好！");
             moticons.put("sorry", "不好意思。");
         }
