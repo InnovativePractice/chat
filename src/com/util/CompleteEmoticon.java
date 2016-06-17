@@ -11,16 +11,16 @@ import java.util.regex.Pattern;
  * @since 2016/6/17
  */
 @SuppressWarnings({"WeakerAccess", "FieldCanBeLocal"})
-public class CompleteMoticon {
+public class CompleteEmoticon {
     private static String regMoticon = ":([^ ]+?):";
-    private static HashMap<String, String> moticons;
+    private static HashMap<String, String> emoticons;
 
     static {
-        if (moticons == null) {
-            moticons = new HashMap<>();
-            moticons.put(":", ":");
-            moticons.put("hello", "你好！");
-            moticons.put("sorry", "不好意思。");
+        if (emoticons == null) {
+            emoticons = new HashMap<>();
+            emoticons.put(":", ":");
+            emoticons.put("hello", "你好！");
+            emoticons.put("sorry", "不好意思。");
         }
     }
 
@@ -30,14 +30,14 @@ public class CompleteMoticon {
      * @param s 需要转换的文本
      * @return 转换后的文本
      */
-    public static String convertMoticonString(String s) {
+    public static String convertEmoticonString(String s) {
         String result = s;
         // 进行匹配用的正则表达式，大小写不敏感
         Pattern p = Pattern.compile(regMoticon, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(result);
         int start = 0;
         while (m.find(start)) {
-            String rep = moticons.get(m.group(1).toLowerCase());
+            String rep = emoticons.get(m.group(1).toLowerCase());
             start = m.start();
             // 只在记号有对应时进行替换
             if (rep != null) {
