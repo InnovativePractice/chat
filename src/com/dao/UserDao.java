@@ -4,6 +4,7 @@ import java.sql.*;
 
 import com.bean.User;
 
+@SuppressWarnings("SqlResolve")
 public class UserDao extends BaseDao {
     /**
      * 根据用户ID查找用户对象
@@ -46,6 +47,26 @@ public class UserDao extends BaseDao {
             pstmt.setString(2, user.getPassword());
             int c = pstmt.executeUpdate();
             return c != 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 删除一个用户
+     *
+     * @param userId 用户id
+     * @return 删除是否成功
+     */
+    public boolean remove(String userId) {
+        String sql = "DELETE FROM [User] WHERE UserId = ?";
+        try (Connection conn = dataSource.getConnection()) {
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, userId);
+                int c = pstmt.executeUpdate();
+                return c != 0;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

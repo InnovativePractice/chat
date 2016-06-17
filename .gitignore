@@ -1,6 +1,4 @@
 ### Java template
-*.class
-
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -38,10 +36,11 @@ Session.vim
 .netrwhist
 *~
 # auto-generated tag files
-tags
+/test
 ### Example user template template
 ### Example user template
 
+/junit
 # IntelliJ project files
 .idea
 *.iml
@@ -49,3 +48,4 @@ tags
 out
 gen
 # Created by .ignore support plugin (hsz.mobi)
+WebContent/WEB-INF/classes/
